@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QCI Lesson 1</title>
+    <script type="module" src="/main.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      h1, h2, h3, h4, h5, h6 {
+        text-transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>QCI</h2>
+          <h4>Day 1: Intro to Linear Algebra</h4>
+        </section>
+
+        <section>
+          <section>
+            <h2>Complex Numbers</h2>
+          </section>
+          <section>
+            \[
+              i^2 = -1 \\
+              i = \sqrt{-1}
+            \]
+            <aside class="notes">
+              These are just basic definitions and should be review
+            </aside>
+          </section>
+          <section>
+            \[
+              c = a + b \times i \\
+              c = (a, b) \\
+              c \in \mathbb{C}
+            \]
+            <aside class="notes">
+              Complex numbers include a real component and a complex component
+
+              We can write them as ordered pairs, which we will be doing from now on
+
+              The last line is just saying that c is in the complex set of numbers
+            </aside>
+          </section>
+          <section>
+            <h4>Quick Math!</h4>
+            \[
+              (4, 2) +  (2, 3) \\
+              (3, 1) +  (4, 1)
+            \]
+            <aside class="notes">
+              Add by components
+
+              Show math on Jamboard
+
+              We'll cover other complex operations as necessary 
+            </aside>
+          </section>
+          <section>
+            <h4>Complex Numbers as Vectors</h4>
+            <div class="flex justify-center">
+              <img src="./assets/complex-vector.jpg" width="500" class="rounded-lg">
+            </div>
+            <p class="fragment">
+              What is the magnitude (length) of this vector (\( |c| \))?
+            </p>
+            <aside class="notes">
+              Use the Pythagorean Theorem
+
+              Show math on Jamboard
+
+              This is just for geometric representation of complex numbers as
+              vectors. We'll be using different representations for vectors
+              later on
+            </aside>
+          </section>
+          <section>
+            <p>Length of complex vector: <strong>modulus</strong></p>
+            <p class="fragment">
+              If c = (a, b)
+              \[
+                |c| = |a + bi| = \sqrt{a^2 + b^2}
+              \]
+            </p>
+            <aside class="notes">
+              The absolute value bars denote "magnitude" of a vector
+            </aside>
+          </section>
+          <section>
+            <h4>Polar Form</h4>
+            <div class="flex justify-center">
+              <img src="./assets/complex-vector-polar.jpg" width="500" class="rounded-lg">
+            </div>
+            <p class="fragment">
+              How do I get \(a\) and \(b\)?
+            </p>
+            <aside class="notes">
+              Use trigonometry
+
+              Show on Jamboard
+            </aside>
+          </section>
+          <section>
+            <div class="flex justify-center">
+              <img src="./assets/complex-vector-polar.jpg" width="500" class="rounded-lg">
+            </div>
+            \[
+              a = \rho \mathrm{cos}(\theta) \\
+              b = \rho \mathrm{sin}(\theta) \\
+              0 \leq \theta &lt; 2\pi
+            \]
+          </section>
+          <section>
+            <p>With polar form, we get the modulus directly</p>
+            <p>\(\rho\) is the <strong>phase</strong></p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Matrices and Vectors</h2>
+          </section>
+          <section>
+            <h4>Vectors</h4>
+            <div>
+              \[
+                V = \begin{pmatrix} 
+                  a \\ 
+                  b \\ 
+                  c
+                \end{pmatrix}  
+              \]
+            </div>
+            <p>\[ V[0] = a \]</p>
+            <aside class="notes">
+              We can think of vectors as 1-D arrays
+
+              We just saw vectors a few minutes ago. That was a geometric
+              representation of complex numbers
+
+              This is another way to look at vectors, which is what we'll be
+              using primarily in this course. If you wanted to geometrically
+              represent this vector, you could think of it as (x, y, z)
+              coordinates in
+              3-dimensional space
+            </aside>
+          </section>
+          <section>
+            <h4>Basic Vector Operations</h4>
+          </section>
+          <section>
+            <div>
+              \[
+                \begin{pmatrix} 
+                  a \\ 
+                  b \\ 
+                  c
+                \end{pmatrix}  
+                + 
+                \begin{pmatrix} 
+                  d \\ 
+                  e \\ 
+                  f
+                \end{pmatrix}  
+                =
+                \begin{pmatrix} 
+                  a+d \\ 
+                  b+e \\ 
+                  c+f
+                \end{pmatrix} \\
+              \]
+            </div>
+            <aside class="notes">
+              Just add each element, pretty straightforward
+            </aside>
+          </section>
+          <section>
+            <div>
+              \[
+                c \cdot
+                \begin{pmatrix}
+                  x \\
+                  y \\
+                  z
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                  c \times x \\
+                  c \times y \\
+                  c \times z
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              Multiplication works similar to addition. \(c\) is what's known
+              as a scalar, which is just a number or a quantity. You cannot
+              multiply two vectors together like this
+
+              This product is known as the scalar product. We're multiplying a
+              vector by a scalar.
+            </aside>
+          </section>
+          <section>
+            <h4>Quick Math!</h4>
+            <div>
+              \[
+                (4 + 3i) \cdot
+                \begin{pmatrix}
+                  3 \\
+                  1 \\
+                  4
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                  12 + 9i \\
+                  4 + 3i \\
+                  16 + 12i
+                \end{pmatrix}
+              \]
+            </div>
+          </section>
+          <section>
+            <h4>Matrices</h4>
+            <div>
+              \[
+                A = \begin{pmatrix} 
+                  a_{0,0} & a_{0,1} & a_{0,2} \\ 
+                  a_{1,0} & a_{1,1} & a_{1,2} \\ 
+                  a_{2,0} & a_{2,1} & a_{2,2}
+                \end{pmatrix}  
+              \]
+            </div>
+            <p>\[ A[1][0] = a_{1,0} \]</p>
+            <aside class="notes">
+              As vectors are 1-D arrays, matrices are 2-D arrays. It's an
+              array of arrays!
+
+              If you wanted, you could scale up to 3-D arrays and higher
+              dimensions, but we're not going to worry about that
+
+              We first specify the row, then column
+
+              This is a square matrix, as it has the same number of rows as 
+              columns. It also just looks like a square
+
+              You might also realize by this point that vectors are just
+              a special case of matrices, where the number of columns is 1
+            </aside>
+          </section>
+          <section data-markdown>
+            <textarea data-template>
+              #### Representation in Code
+
+              ```python
+                my_vector = [3, 1, 4, 1, 5, 9, 2]
+                my_matrix = [
+                  [6, 5, 3, 5, 8, 9],
+                  [7, 9, 3, 2, 3, 8],
+                  [4, 6, 2, 6, 4, 3]
+                ]
+
+                print(my_vector[0]) # 3
+                print(my_matrix[0][1]) # 5
+              ```
+            </textarea>
+            <aside class="notes">
+              The matrix here is not a square matrix
+
+              Notice that the matrix is just an array of arrays. It's a vector
+              of vectors. To access the 0th array (vector), we specify that
+              first. Then we select the 1st element in it, to get 5.
+            </aside>
+          </section>
+          <section>
+            <h4>Basic Matrix Operations</h4>
+          </section>
+          <section>
+            <div>
+              \[
+                \begin{pmatrix} 
+                  c_{0,0} & c_{0,1} & c_{0,2} \\ 
+                  c_{1,0} & c_{1,1} & c_{1,2} \\ 
+                  c_{2,0} & c_{2,1} & c_{2,2}
+                \end{pmatrix}  
+                +
+                \begin{pmatrix} 
+                  d_{0,0} & d_{0,1} & d_{0,2} \\ 
+                  d_{1,0} & d_{1,1} & d_{1,2} \\ 
+                  d_{2,0} & d_{2,1} & d_{2,2}
+                \end{pmatrix}  
+              \]
+            </div>
+            <div>
+              \[
+                =
+                \begin{pmatrix} 
+                  c_{0,0} + d_{0,0} & c_{0,1} + d_{0,1}& c_{0,1} + d_{0,2} \\ 
+                  c_{1,0} + d_{1,0} & c_{1,1} + d_{1,1}& c_{1,1} + d_{1,2} \\ 
+                  c_{2,0} + d_{1,0} & c_{2,1} + d_{2,1}& c_{2,1} + d_{2,2} \\ 
+                \end{pmatrix}  
+              \]
+            </div>
+            <aside class="notes">
+              Just add each element, pretty straightforward
+
+              It's just a lot of work to do by hand
+            </aside>
+          </section>
+          <section>
+            <div>
+              \[
+                c \cdot
+                \begin{pmatrix} 
+                  d_{0,0} & d_{0,1} \\ 
+                  d_{1,0} & d_{1,1} \\ 
+                  d_{2,0} & d_{2,1}
+                \end{pmatrix}  
+              \]
+            </div>
+            <div>
+              \[
+                =
+                \begin{pmatrix} 
+                  c \times d_{0,0} & c \times d_{0,1} \\ 
+                  c \times d_{1,0} & c \times d_{1,1} \\ 
+                  c \times d_{1,0} & c \times d_{2,1}
+                \end{pmatrix}  
+              \]
+            </div>
+            <aside class="notes">
+              We're multiplying by a scalar here. We cannot multiply two
+              matrices together like this. But like addition, this is fairly
+              straightforward: We just multiply component-wise
+            </aside>
+          </section>
+          <section>
+            <h4>Funny Matrix Business</h4>
+          </section>
+          <section>
+            <h4>Transpose</h4>
+            <p>"Reflection across the diagonal"</p>
+            <div>
+              \[
+                A^T[i, j] = A[j, i]
+              \]
+            </div>
+            <aside class="notes">
+              The superscript T denotes the transpose operation
+            </aside>
+          </section>
+          <section>
+            <div>
+              \[
+                A = \begin{pmatrix} 
+                  a_{0,0} & a_{0,1} \\ 
+                  a_{1,0} & a_{1,1}
+                \end{pmatrix}  
+              \]
+            </div>
+            <p>What is \(A^T\)?</p>
+            <aside class="notes">
+              Show math on Jamboard
+            </aside>
+          </section>
+          <section>
+            <div>
+              \[
+                A = \begin{pmatrix} 
+                a_{0,0} & a_{0,1} & a_{0,2} \\ 
+                a_{1,0} & a_{1,1} & a_{1,2} \\ 
+                \end{pmatrix}  
+              \]
+            </div>
+            <p>What is \(A^T\)?</p>
+            <aside class="notes">
+              Show math on Jamboard
+
+              Note that transpose changes the shape of non-square matrices
+
+              There are some other operaions such as conjugate, where each
+              element of the resultant matrix is the conjugate of the original.
+              Conjugate as in the pair \(3 + 4i\) and \(3 - 4i\)
+            </aside>
+          </section>
+          <section>
+            <h4>Matrix Multiplication</h4>
+            <p>Special condition: \(m = n\)</p>
+            <aside class="notes">
+              This is probably the most important thing you need to understand
+              from today. Just at least get the general idea
+
+              Only valid when the number columns in the 1st matrix equals the
+              number of rows in the 2nd.
+
+              \(m\) is the number of columns in the 1st matrix, \(n\) is the
+              number of rows in the 2nd
+
+              I always forget which way it is, don't worry too much. Just get
+              an idea of how it works
+            </aside>
+          </section>
+          <section>
+            <div>
+              \[
+                A = \begin{pmatrix} 
+                a_{0,0} & a_{0,1} & a_{0,2} \\ 
+                a_{1,0} & a_{1,1} & a_{1,2} \\ 
+                \end{pmatrix} \\
+
+                B = \begin{pmatrix} 
+                b_{0,0} & b_{0,1} \\ 
+                b_{1,0} & b_{1,1} \\ 
+                b_{2,0} & b_{2,1} \\ 
+                \end{pmatrix}
+              \]
+            </div>
+            <p>What is \(\textbf{AB}\)?</p>
+            <aside class="notes">
+              You kind of take teach row of the first matrix, flip it and
+              multiply each element of the second, then add the result and
+              put it in the resulting matrix
+
+              The resultant matrix should have the same number of rows as the
+              first matrix and the same number of columns as the second matrix
+
+              Matrix multiplication is <strong>not commutative</strong>
+            </aside>
+          </section>
+          <section>
+            <h4>(Not So) Quick Math!</h4>
+            <div>
+              \[
+                \begin{pmatrix} 
+                  2 & 7 & 1 \\
+                  8 & 2 & 8
+                \end{pmatrix}
+                \begin{pmatrix} 
+                  6 & 2 \\
+                  8 & 3 \\ 
+                  1 & 8
+                \end{pmatrix}
+                =
+              \]
+            </div>
+            <aside class="notes">
+              Show math on Jamboard
+
+              Let's do this with some actual numbers in the matrix
+
+              We have a 2 x 3 and a 3 x 2 matrix, so we can multiply. The
+              resulting matrix will have 2 rows, 2 columns
+            </aside>
+          </section>
+          <section>
+            <h4>Identity Matrix</h4>
+            <p>For every matrix exists an identity \(\textbf{I}\) such that</p>
+            <div>
+              \[
+                \textbf{AI} = A
+              \]
+            </div>
+          </section>
+          <section>
+            <div>
+              \[
+                \begin{pmatrix} 
+                  2 & 7 & 1 \\
+                  8 & 2 & 8
+                \end{pmatrix}
+                \begin{pmatrix} 
+                  1 & 0 & 0 \\
+                  0 & 1 & 0 \\
+                  0 & 0 & 1
+                \end{pmatrix}
+                =
+                \begin{pmatrix} 
+                  2 & 7 & 1 \\
+                  8 & 2 & 8
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              The identity is a square matrix with 1s on the diagonal and 0s
+              everywhere else. You can convince yourself by doing this
+              multiplication
+            </aside>
+          </section>
+          <section>
+            <h4>Tensor Products + Factoring</h4>
+          </section>
+          <section>
+            <div>
+              \[
+                \begin{pmatrix}
+                  a_0 \\
+                  a_1
+                \end{pmatrix}
+                \otimes
+                \begin{pmatrix}
+                  b_0 \\
+                  b_1
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                  a_0 
+                  \begin{pmatrix}
+                    b_0 \\
+                    b_1
+                  \end{pmatrix} \\
+                  a_1 
+                  \begin{pmatrix}
+                    b_0 \\
+                    b_1
+                  \end{pmatrix} \\
+                \end{pmatrix}
+              \]
+            </div>
+            <div>
+              \[
+                = 
+                \begin{pmatrix}
+                  a_0 b_0 \\
+                  a_0 b_1 \\
+                  a_1 b_0 \\
+                  a_1 b_1
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              You're kind of just multiplying the second vector by each element
+              in the first vector
+
+              Tensor products are going to be very important for keeping track
+              of the state of our quantum computer
+
+              This is a tensor product with vectors, but we can do the same
+              thing with matrices. I'm not going to cover it here, but we can
+              do a quick review if we run into them in the future. The idea,
+              though, is basically the same: Take the second matrix and
+              multiply it by each element of the first matrix
+            </aside>
+          </section>
+          <section>
+            <h4>Quick Math!</h4>
+            <div>
+              \[
+                \begin{pmatrix}
+                  3 \\
+                  42
+                \end{pmatrix}
+                \otimes
+                \begin{pmatrix}
+                  2 \\
+                  6 \\
+                  12
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              Show math on Jamboard
+
+              Unsimplified answers are fine
+            </aside>
+          </section>
+          <section>
+            <h4>Factoring Product States</h4>
+          </section>
+          <section>
+          <div>
+              \[
+                \begin{pmatrix}
+                  a_0 \\
+                  a_1
+                \end{pmatrix}
+                \otimes
+                \begin{pmatrix}
+                  b_0 \\
+                  b_1
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                  a_0 b_0 \\
+                  a_0 b_1 \\
+                  a_1 b_0 \\
+                  a_1 b_1
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              Factoring product states will also be important for quantum
+              computing
+
+              We know this information holds true, so we can use the
+              product state and our knowledge about tensor products to return
+              to the intial two vectors
+            </aside>
+          </section>
+          <section>
+            <h4>More Quick Math!</h4>
+            <div>
+              \[
+                \begin{pmatrix}
+                  1 \\
+                  0 \\
+                  1 \\
+                  0
+                \end{pmatrix}
+              \]
+            </div>
+            <p>Factor this into two vectors</p>
+            <aside class="notes">
+              Show math on Jamboard
+            </aside>
+          </section>
+          <section>
+            <h4>Even More Quick Math!</h4>
+            <div>
+              \[
+                \begin{pmatrix}
+                  1 \\
+                  0 \\
+                  0 \\
+                  1
+                \end{pmatrix}
+              \]
+            </div>
+            <p>Factor this into two vectors</p>
+            <aside class="notes">
+              Show math on Jamboard
+
+              Some product states cannot be factored fully. This is an
+              important fact to remember.
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>A Few Special Vectors</h2>
+          </section>
+          <section>
+            <div>
+              \[
+                |0\rangle =
+                \begin{pmatrix}
+                  1 \\
+                  0
+                \end{pmatrix}
+              \]
+            </div>
+            <div>
+              \[
+                |1\rangle =
+                \begin{pmatrix}
+                  0 \\
+                  1
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              We're going to be very familiar with these vectors and with
+              this notation. The notation you see on the left is called
+              bra-ket notation, and we use it to represent vectors.
+            </aside>
+          </section>
+          <section>
+            <h4>Bra-Ket Notation</h4>
+            <div>
+              \[
+                \langle q_0 | = (0, 1) \\
+                | \psi \rangle =
+                \begin{pmatrix}
+                  \frac{1}{\sqrt{2}} \\
+                  \frac{i}{\sqrt{2}}
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              Don't be afraid of this notation. The values are just examples
+
+              Column vectors, such as the two here, are called <strong>kets</strong>
+
+              We'll call row vectors <strong>bras</strong>, which we'll run into later'
+
+              This notation is called Dirac bra-ket notation
+
+              That Greek letter is psi, we're just going to treat it as some
+              arbitrary vector. You'll see this letter a bit later
+            </aside>
+          </section>
+          <section>
+            <div>
+              \[
+                | \psi \rangle =
+                \tfrac{1}{\sqrt{2}}|0\rangle + \tfrac{i}{\sqrt{2}}|1\rangle
+              \]
+            </div>
+            <div>
+              \[
+                =
+                \tfrac{1}{\sqrt{2}}
+                \begin{pmatrix}
+                  1 \\
+                  0
+                \end{pmatrix}
+
+                + \tfrac{i}{\sqrt{2}}
+                \begin{pmatrix}
+                  0 \\
+                  1
+                \end{pmatrix}
+              \]
+            </div>
+            <div>
+              \[
+                =
+                \begin{pmatrix}
+                  \tfrac{1}{\sqrt{2}} \\
+                  0
+                \end{pmatrix}
+                +
+                \begin{pmatrix}
+                  0 \\
+                  \tfrac{i}{\sqrt{2}}
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              And just for fun, let's see how we can write our vector psi in
+              terms of the 0 and 1 vectors.
+
+              By the last step, I hope you can see we're back at our original
+              vector for psi
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Transpose">
+                https://en.wikipedia.org/wiki/Transpose
+              </a>
+            </li>
+            <li>
+              <i>Yanofsky, Mannucci. Quantum Computing for Computer Scientists</i>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=2spTnAiQg4M">
+                https://www.youtube.com/watch?v=2spTnAiQg4M
+              </a>
+            </li>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Identity_matrix">
+                https://en.wikipedia.org/wiki/Identity_matrix
+              </a>
+            </li>
+            <li>
+              <a href="https://qiskit.org/textbook/ch-appendix/linear_algebra.html#Outer-Products-and-Tensor-Products">
+                https://qiskit.org/textbook/ch-appendix/linear_algebra.html#Outer-Products-and-Tensor-Products
+              </a>
+            </li>
+            <li>
+              <a href="https://qiskit.org/textbook/ch-states/representing-qubit-states.html">
+                https://qiskit.org/textbook/ch-states/representing-qubit-states.html
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
