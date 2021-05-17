@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QCI Lesson 3</title>
+    <script type="module" src="/main.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      h1, h2, h3, h4, h5, h6 {
+        text-transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>QCI</h2>
+          <h4>Day 3: Intro to Quantum Mechanics and Quantum Computing</h4>
+        </section>
+
+        <section>
+          <section>
+            <h2>Intro to QM</h2>
+          </section>
+          <section>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1">
+                <img src="./assets/double-slit.png" alt="Tanay" width="500" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>Double Slit Experiment</p>
+                <p class="fragment">
+                  \[
+                    i \hbar \frac{\partial}{\partial t} |\psi(t) \rangle = \hat{H} |\psi(t) \rangle
+                  \]
+                </p>
+              </div>
+            </div>
+            <aside class="notes">
+              Pg. 105-106 in Mannucci, Yanofsky
+
+              Is light a wave or particle?
+
+              This experiment can be done one photon at a time. One photon can
+              go through both slits at the same time—superposition—and even
+              cancel itself out.
+
+              We can do this experiment with small particles—not just light
+
+              Pattern on the detector and its relation to the wave function
+
+              Don't worry, you won't really see this equation later. Understanding
+              it is beyond the scope of our course, but this wave function
+              determines our quantum state.
+
+              Copenhagen interpretation of QM
+            </aside>
+          </section>
+          <section>
+            <h3>Quantum States</h3>
+          </section>
+          <section>
+            <div>
+              \[
+                |0\rangle =
+                \begin{pmatrix}
+                  1 \\
+                  0
+                \end{pmatrix}
+              \]
+            </div>
+            <div>
+              \[
+                |1\rangle =
+                \begin{pmatrix}
+                  0 \\
+                  1
+                \end{pmatrix}
+              \]
+            </div>
+            <div>
+              \[
+                |\psi \rangle
+                =
+                \begin{pmatrix} 
+                  a \\ 
+                  b
+                \end{pmatrix}  
+              \]
+            </div>
+            <aside class="notes">
+              These vectors represent a quantum state, which can have either 0
+              or 1. $|\psi \rangle$ represents a superposition state
+            </aside>
+          </section>
+          <section>
+            <p>Superposition</p>
+            <div>
+              \[
+                |\psi \rangle
+                =
+                \begin{pmatrix}
+                  \tfrac{1}{\sqrt{2}} \\
+                  \tfrac{i}{\sqrt{2}}
+                \end{pmatrix}
+              \]
+            </div>
+            <aside class="notes">
+              Our vector $\psi$ is in a <strong>superposition</strong> of 0 and 1
+
+              Draw an analogy to how a photon can go through 2 slits at once 
+
+              Our amplitudes can be complex numbers
+
+              Amplitudes are like the amplitudes in a wave
+            </aside>
+          </section>
+          <section>
+            <h3>Observer Effect</h3>
+            <p>Observing a system changes its state</p>
+            <p class="fragment">Causes a superposition to collapse</p>
+            <aside class="notes">
+              Blind person trying to locate a ball with a stick analogy
+
+              Schrodinger's Cat
+
+              This is not the Heisenberg Uncertainty Principle
+            </aside>
+          </section>
+          <section>
+            <p>Probabilities</p>
+            <div>
+              \[
+                |\psi \rangle
+                =
+                \begin{pmatrix}
+                  \tfrac{1}{\sqrt{2}} \\
+                  \tfrac{i}{\sqrt{2}}
+                \end{pmatrix}
+              \]
+            </div>
+            <div>
+              $p(|x\rangle) = | \langle x| \psi \rangle|^2$
+            </div>
+            <aside class="notes">
+              From Qiskit Textbook: Representing Quantum States and Mannucci, Yanofsky p. 96
+
+              To find the probability of finding our system in a particular
+              state, we square the absolute amplitude of that state
+
+              Show math on Jamboard
+
+              Conservation of probability (sum of amplitudes squared must add to 1)
+
+              We need complex numbers as when we square the complex amplitudes
+              $a$ and $b$, sometimes these probabilities cancel themselves out
+
+              This is like the interference in the double slit experiment
+            </aside>
+          </section>
+          <section>
+            <div>
+              \[
+                \begin{pmatrix}
+                  1 \\
+                  0
+                \end{pmatrix}
+                \otimes
+                \begin{pmatrix}
+                  0 \\
+                  1
+                \end{pmatrix}
+                =
+                \begin{pmatrix}
+                  0 \\
+                  1 \\
+                  0 \\
+                  0
+                \end{pmatrix}
+              \]
+            </div>
+            <div>
+                \[
+                  \begin{pmatrix}
+                    a_0 \\
+                    a_1
+                  \end{pmatrix}
+                  \otimes
+                  \begin{pmatrix}
+                    b_0 \\
+                    b_1
+                  \end{pmatrix}
+                  =
+                  \begin{pmatrix}
+                    a_0 b_0 \\
+                    a_0 b_1 \\
+                    a_1 b_0 \\
+                    a_1 b_1
+                  \end{pmatrix}
+                \]
+              </div>
+            <aside class="notes">
+              We use the tensor product to describe two quantum states together
+
+              Show math on Jamboard
+
+              $a_0b_0$ shows the amplitude for both states being 0
+
+              Recall that the 0th element tells us the probability of the state
+              being a 0. The 1st element tells us the probability of 0
+            </aside>
+          </section>
+          <section>
+            <p>Entangled States</p>
+            <div>
+              \[
+                \begin{pmatrix}
+                  1 \\
+                  0 \\
+                  0 \\
+                  1
+                \end{pmatrix}
+              \]
+            </div>
+            <p class="fragment">Cannot be factored!</p>
+            <aside class="notes">
+              Recall that we cannot factor entangled states
+
+              The states only make sense <strong>together</strong>
+
+              When one state collapses, the other will collapse instantaneously
+              (even if the two quantum systems are very far apart)
+
+              Show math on Jamboard
+            </aside>
+          </section>
+          <section>
+            <h3>Intro to Dynamics</h3>
+            <aside class="notes">
+              How do things change?
+            </aside>
+          </section>
+          <section>
+            <p>Quick Math!</p>
+            <div>
+              \[
+                \begin{pmatrix}
+                  0 & 1\\
+                  1 & 0\\
+                \end{pmatrix}
+                |0\rangle
+              \]
+            </div>
+            <div class="fragment">
+              $= |1\rangle$
+            </div>
+            <aside class="notes">
+              We represent changes to quantum states with matrices
+
+              Changes are simulated by matrix multiplication, and they must be
+              reversible
+
+              Show math (multiplication and reverse) on Jamboard
+
+              Teaser: There are 4 single bit operations. What does this remind
+              us of? What's special about this matrix?
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Computing with Quantum</h2>
+          </section>
+          <section>
+            <h3>Qubits: Quantum Bits</h3>
+            <p class="fragment">Obeys quantum principles</p>
+            <p class="fragment">Special quantum logic gates</p>
+            <p class="fragment">Represented by superconducting chips</p>
+          </section>
+          <section>
+            <h3>The Quantum Computer</h3>
+            <div class="flex justify-center">
+              <img src="./assets/quantum-computer.jpeg" alt="bit identity" width="300" class="rounded-lg">
+            </div>
+            <aside class="notes">
+              Most of the infrastructure goes to cooling – near absolute zero!
+
+              Discuss the quantum error correction
+            </aside>
+          </section>
+          <section>
+            <h3>Why Quantum?</h3>
+            <p>Superposition</p>
+            <p class="fragment">Entanglement</p>
+          </section>
+          <section>
+            <h3>Applications of QC</h3>
+            <p>Simulations</p>
+            <p class="fragment">Computer security</p>
+            <p class="fragment">Computer science</p>
+
+            <aside class="notes">
+              We can simulate biological systems much faster than a classical machine
+
+              Shor's Algorithm (which we'll get into later)
+
+              Grover's Algorithm (search a list in $O(\sqrt{n})$ time)
+
+              It's not just faster – quantum computers do tasks that classical
+              computers could never do
+            </aside>
+          </section>
+          <section>
+            <p>Reversible Operations: TODO</p>
+            <aside class="notes">
+              Mannucci, Yanofsky p. 91-92
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li>
+              <i>Yanofsky, Mannucci. Quantum Computing for Computer Scientists</i>
+            </li>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation">Wikipedia. Schrodinger Equation</a>
+            </li>
+            <li>
+              <a href="https://qiskit.org/textbook/ch-states/representing-qubit-states.html">Qiskit Textbook. Representing Qubit States</a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
