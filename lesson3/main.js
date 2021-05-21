@@ -14,5 +14,8 @@ deck.initialize({
   plugins: [ Markdown, Highlight, Notes, Math ]
 })
 
-Reveal.configure({ pdfSeparateFragments: false });
+Reveal.configure({
+  pdfSeparateFragments: false,
+  showNotes: true,
+});
 
