@@ -116,7 +116,9 @@
               <br><br>
               These vectors represent a quantum state (a qubit, a quantum bit)
               which can have either 0 or 1. Like bits form classical computers,
-              qubits form quantum computers
+              qubits form quantum computers. The 0 or 1 can be represented by
+              the spin of a particle like an electron (explain spin) and can
+              be mainipulated by precise microwave pulses
               <br><br>
               These are simpler than the more complex number line we saw earlier,
               and thankfully we won't be dealing too much with state vectors
@@ -207,7 +209,7 @@
           <section>
             <div>
               $$|\alpha|^2 + |\beta|^2 = 1$$
-              $$|\psi\rangle = cos(\theta)|0\rangle + e^{i\phi}sin(\theta)|1\rangle$$
+              $$|\psi\rangle = cos(\theta/2)|0\rangle + e^{i\phi}sin(\theta/2)|1\rangle$$
               <p class="fragment">$\phi$ is the phase</p>
             </div>
             <aside class="notes">
@@ -337,8 +339,10 @@
             <p>Given a function and an output, you can find the input</p>
             <p class="fragment">Quantum operators are their own inverses</p>
             <aside class="notes">
-              Mannucci, Yanofsky p. 91-92
-              <br> <br>
+              Mannucci, Yanofsky p. 91-92 and 151-152
+              <br><br>
+              If there's time, go over pg. 151-152 in Mannucci, Yanofsky
+              <br><br>
               Quantum Computing for Computer Scientists (8:45)
             </aside>
           </section>
@@ -391,6 +395,15 @@
             <p class="fragment">Obeys quantum principles</p>
             <p class="fragment">Special quantum logic gates</p>
             <p class="fragment">Represented by superconducting chips</p>
+            <p class="fragment">Manipulated by microwave pulses</p>
+            <aside class="notes">
+              Like a bit is a unit of information, so is a qubit. We can
+              implement it in different ways, such as the spin of a particle.
+              Electrons have a property of spin up/down (they have angular momentum).
+              Explain superposition with spin.
+              <br><br>
+              Mannucci, Yanofsky p. 141
+            </aside>
           </section>
           <section>
             <h4>The Quantum Computer</h4>
@@ -430,23 +443,12 @@
         <section>
           <h2>References</h2>
           <ul>
-            <li>
-              <i>Yanofsky, Mannucci. Quantum Computing for Computer Scientists</i>
+            <li> <i>Yanofsky, Mannucci. Quantum Computing for Computer Scientists</i>
             </li>
-            <li>
-              <a href="https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation">Wikipedia. Schrodinger Equation</a>
-            </li>
-            <li>
-              <a href="https://qiskit.org/textbook/ch-states/representing-qubit-states.html">Qiskit Textbook. Representing Qubit States</a>
-            </li>
-            <li>
-              <a href="https://www.youtube.com/watch?v=2spTnAiQg4M">
-                Quantum Computing for Computer Scientists. Youtube
-              </a>
-            </li>
-            <li>
-              <a href="https://towardsdatascience.com/the-qubit-phase-b5fea2026ea">Towards Data Science. The Qubit Phase</a>
-            </li>
+            <li> <a href="https://en.wikipedia.org/wiki/Schr%C3%B6dinger_equation">Wikipedia. Schrodinger Equation</a> </li>
+            <li> <a href="https://qiskit.org/textbook/ch-states/representing-qubit-states.html">Qiskit Textbook. Representing Qubit States</a> </li>
+            <li> <a href="https://www.youtube.com/watch?v=2spTnAiQg4M"> Quantum Computing for Computer Scientists. Youtube </a> </li>
+            <li> <a href="https://towardsdatascience.com/the-qubit-phase-b5fea2026ea">Towards Data Science. The Qubit Phase</a> </li>
           </ul>
         </section>
       </div>

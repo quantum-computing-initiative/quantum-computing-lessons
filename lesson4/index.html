@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QCI Lesson 3</title>
+    <script type="module" src="/main.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      h1, h2, h3, h4, h5, h6 {
+        text-transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>QCI</h2>
+          <h4>Day 4: Quantum Gates [0]</h4>
+        </section>
+
+        <section>
+          <section>
+            <h3>Quantum Gates</h3>
+          </section>
+          <section>
+            <h4>Single-Bit Operators</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1">
+                <p class="fragment">
+                  Identity
+                  $$\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$$
+                </p>
+                <p class="fragment">
+                  Negation
+                  $$\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$$
+                </p>
+              </div>
+              <div class="col-span-1">
+                <p class="fragment">
+                  Constant-0
+                  $$\begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}$$
+                </p>
+                <p class="fragment">
+                  Constant-1
+                  $$\begin{pmatrix} 0 & 0 \\ 1 & 1 \end{pmatrix}$$
+                </p>
+              </div>
+            </div>
+            <aside class="notes">
+              Remember we said we can show changes to state as matrices?
+              <br><br>
+              What are the 4 single-bit operators? Guess their matrices.
+              <br><br>
+              Show math on Jamboard. Multiply these by |0> (default state)
+              <br><br>
+              Which ones are of these valid quantum operations? (identity, negation)
+            </aside>
+          </section>
+          <section>
+            <h4>Single-Qubit Operators</h4>
+            <p>
+              Identity
+              $$\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$$
+            </p>
+            <p class="fragment">
+              Negation
+              $$\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$$
+            </p>
+          </section>
+          <section>
+            <h4>I Gate</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="./assets/bit-identity.png" width="500" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>
+                  Identity
+                  $$\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}$$
+                </p>
+              </div>
+            </div>
+          </section>
+          <section>
+            <h4>X Gate</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="./assets/x-bloch.png" width="300" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>
+                  Negation
+                  $$\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}$$
+                </p>
+              </div>
+            </div>
+            <aside class="notes">
+              Rotates our state by $\pi$ radians on the X axis
+              <br><br>
+              Show X gate on Qiskit
+            </aside>
+          </section>
+          <section>
+            <h4>Y Gate</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="./assets/y-bloch.png" width="500" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>
+                  Negation
+                  $$\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}$$
+                </p>
+              </div>
+            </div>
+            <aside class="notes">
+              Rotates our state by $\pi$ radians on the Y axis. Will turn
+              $|0 \rangle$ into $|1 \rangle$ much like the X gate.
+              <br><br>
+              Image from Mannucci, Yanofsky pg. 163
+            </aside>
+          </section>
+          <section>
+            <h4>Z Gate</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="./assets/z-bloch.png" width="300" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>
+                  Phase Flip
+                  $$\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}$$
+                </p>
+              </div>
+            </div>
+            <aside class="notes">
+              Rotates our state by $\pi$ radians on the Z axis. Doesn't change
+              probabilities (how high/low the vector points), but it does change
+              the phase
+              <br><br>
+              Image from Mannucci, Yanofsky pg. 162
+            </aside>
+          </section>
+          <section>
+            <h4>Qiskit Demo: Hands-On With Pauli Gates</h4>
+            <aside class="notes">
+              Show in Qiskit and then IBM Quantum Composer
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Multi-Qubit Gates</h3>
+          </section>
+          <section>
+            <h4>CNOT Gate</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="./assets/cnot.png" width="300" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>XOR</p>
+                <p class="fragment">Flips target if control is 1</p>
+              </div>
+            </div>
+            <aside class="notes">
+              Functions like the XOR operator and requires 2 qubits.
+              <br><br>
+              What special matrix does this look similar to? (Identity)
+              <br><br>
+              If the control qubit is 1, then the target qubit flips. Show truth
+              table and compare to XOR on Jamboard.
+              <br><br>
+              Explain circuit diagram
+            </aside>
+          </section>
+          <section>
+            <h4>Controlled-U Gate</h4>
+            <p>
+              $$\begin{pmatrix}
+              1 & 0 & 0 & 0 \\
+              0 & 1 & 0 & 0 \\
+              0 & 0 & a & b \\
+              0 & 0 & c & d
+              \end{pmatrix}$$
+            </p>
+            <aside class="notes">
+              Here's something cool:
+              <br><br>
+              We can replace a/b/c/d with complex numbers that represent a single-qubit
+              operator and use this to perform controlled operations
+              (not just the NOT operator)
+              <br><br>
+              Mannucci, Yanofsky pg. 165-166
+            </aside>
+          </section>
+          <section>
+            <h4>Toffoli Gate (CCNOT)</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="./assets/toffoli.png" width="300" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>Matrix similar to CNOT</p>
+                <p class="fragment">Flips target if both control qubits are 1</p>
+              </div>
+            </div>
+            <aside class="notes">
+              The matrix is big, and we're not really going to worry about it,
+              but it's similar to CNOT but it's an 8x8 matrix.
+              <br><br>
+              If both control qubits are 1, then the target qubit flips
+              <br><br>
+              With the Toffoli gate, we can basically create any logical gate–
+              and it's reversible! We can chain Toffoli gates together to
+              have 3 control qubits and keep going forever
+              <br><br>
+              Side note (may not mention in class): In theory, we can make a
+              computer that uses no energy
+              <br><br>
+              Mannucci, Yanofsky pg. 154-155
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Project: Quantum Adding Machine</h3>
+            <aside class="notes">
+              "Truth table" for binary addition
+              <a href="https://qiskit.org/textbook/ch-states/atoms-computation.html">Reference</a>
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li> <i>Yanofsky, Mannucci. Quantum Computing for Computer Scientists</i> </li>
+            <li> <a href="https://www.youtube.com/watch?v=F_Riqjdh2oM">YouTube. Quantum Computing for Computer Scientists</a> </li>
+            <li> <a href="https://www.youtube.com/watch?v=gz5rjhiU4ao">YouTube. Quantum Gates</a> </li>
+            <li> <a href="https://qiskit.org/textbook/ch-states/single-qubit-gates.html#6.3-The-T-gate-">Qiskit Textbook. Single Qubit Gates</a> </li>
+            <li> <a href="https://qiskit.org/textbook/ch-states/atoms-computation.html">Qiskit Textbook. The Atoms of Computation</a> </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
