@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quantum Computing Initiative</title>
+    <script type="module" src="/main.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      h1, h2, h3, h4, h5, h6 {
+        text-transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>QCI</h2>
+          <h4>Day 5: Quantum Gates [1]</h4>
+        </section>
+
+        <section>
+          <section>
+            <h3>State Vectors</h3>
+          </section>
+          <section>
+            <p>Does this satisfy conservation of probability?</p>
+            <div>
+              $$
+                \vert \psi \rangle = 
+                \begin{pmatrix}
+                  \frac{\sqrt{2}}{\sqrt{ 3 }} \\
+                  \frac{1}{\sqrt{3}}
+                \end{pmatrix}
+              $$
+            </div>
+          </section>
+
+          <section>
+            <p>Exercise: Qiskit Statevectors</p>
+            <aside class="notes">
+              Show custom state and bloch sphere plots
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Superposition & Phase</h3>
+            <aside class="notes">
+              Information from this section comes from Qiskit Textbook. Single Qubit Gates.
+            </aside>
+          </section>
+          <section>
+            <h4>Hadamard Gate</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="/lesson5-assets/hadamard.png" width="250" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>
+                  $$
+                    H = \tfrac{1}{\sqrt{2}}\begin{bmatrix} 1 & 1 \\ 1 & -1 \end{bmatrix}
+                  $$
+                </p>
+                <p class="fragment">
+                  $$H\vert 0\rangle = \vert+\rangle$$
+                  $$H\vert 1\rangle = \vert-\rangle$$
+                </p>
+              </div>
+            </div>
+            <aside class="notes">
+              Apply H to |0> and |1>. What is the difference? Show math on iPad
+              <br><br>
+              The + and - have to do with the sign of the phase (we'll see this on the bloch sphere)
+            </aside>
+          </section>
+          <section>
+            <h4>$R_\phi$ Gate</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="/lesson5-assets/bloch-sphere.jpg" width="300" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>
+                  $$
+                    R_\phi = \begin{bmatrix} 1 & 0 \\ 0 & e^{i\phi} \end{bmatrix}
+                  $$
+                </p>
+              </div>
+            </div>
+            <aside class="notes">
+              Performs a rotation by $\phi$ radians on the Z axis.
+              <br><br>
+              What gate does this resemble?
+            </aside>
+          </section>
+          <section>
+            <h4>$S$/$S\dagger$ ($\sqrt{Z}$/$\sqrt{Z}^\dagger$) Gates</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="/lesson5-assets/bloch-sphere.jpg" width="300" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>
+                  $$
+                  \sqrt{Z} = S = \begin{bmatrix} 1 & 0 \\ 0 & e^{\frac{i\pi}{2}} \end{bmatrix}
+                  $$
+                  $$
+                  \sqrt{Z}^\dagger = S^\dagger = \begin{bmatrix} 1 & 0 \\ 0 & e^{-\frac{i\pi}{2}} \end{bmatrix}
+                  $$
+                </p>
+              </div>
+            </div>
+            <aside class="notes">
+              Special case of the $R_\phi$ gate with $\phi = \frac{\pi}{2}$
+              <br><br>
+              Why is this called $sqrt{Z}$? (applying this gate twice results in Z)
+              <br><br>
+              Are they their own inverses? (No. Show math on Jamboard)
+            </aside>
+          </section>
+          <section>
+            <h4>$T/T^\dagger$ ($\sqrt[4]{Z}/\sqrt[4]{Z}^\dagger$) Gates</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1 flex flex-col justify-center">
+                <img src="/lesson5-assets/bloch-sphere.jpg" width="300" class="rounded-lg">
+              </div>
+              <div class="col-span-1 flex flex-col justify-center text-center">
+                <p>
+                  $$
+                    T = \begin{bmatrix} 1 & 0 \\ 0 & e^{\frac{i\pi}{4}} \end{bmatrix}
+                  $$
+                  $$
+                    T^\dagger = \begin{bmatrix} 1 & 0 \\ 0 & e^{-\frac{i\pi}{4}} \end{bmatrix}
+                  $$
+                </p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <p>Exercise: Qiskit Superposition and Phase</p>
+        </section>
+
+        <section>
+          <section>
+            <h4>Entanglement</h4>
+          </section>
+          <section>
+            <h4>Review: Entangled Statevectors</h4>
+            <div>
+              $$
+                \begin{pmatrix}
+                  1 \\
+                  0 \\
+                  0 \\
+                  1
+                \end{pmatrix}
+              $$
+            </div>
+          </section>
+          <section>
+            <p>How might we entangle two qubits?</p>
+            <aside class="notes">
+              Bell State: H + CNOT (Show in Qiskit, show histogram and bloch sphere)
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h4>Qiskit: Intro to Phase Kickback</h4>
+            <aside class="notes">
+              Put a $\vert 0\rangle$ into superposition with H, it has positive phase.
+              <br><br>
+              Put a $\vert 1\rangle$ into superposition with H, it has negative phase.
+              <br><br>
+              Show matrix multiplication with CNOT (from $\vert +\rangle$ to $\vert -\rangle$) to see what will happen
+            </aside>
+          </section>
+          <section>
+            <p>
+              Phase Kickback: Using a controlled gate to modify the control qubit
+            </p>
+            <aside class="notes">
+              Wrap a CNOT in H gates -- shows kickback
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li> <a href="https://qiskit.org/textbook/ch-states/single-qubit-gates.html#6.3-The-T-gate-">Qiskit Textbook. Single Qubit Gates</a> </li>
+            <li> <a href="https://qiskit.org/textbook/ch-gates/phase-kickback.html">Qiskit Textbook. Phase Kickback</a> </li>
+            <li> <a href="https://qiskit.org/textbook/ch-gates/multiple-qubits-entangled-states.html">Qiskit Textbook. Multiple Qubits and Entangled States</a> </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
