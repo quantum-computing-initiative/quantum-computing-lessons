@@ -11,3 +11,6 @@ node_modules/
 .sass-cache
 dist/*.map
 *.swp
+*.nav
+*.snm
+*.gs
