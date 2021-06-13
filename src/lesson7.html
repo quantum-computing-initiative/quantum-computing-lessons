@@ -33,7 +33,7 @@
           <section>
             <h4>The Oracle</h4>
             <aside class="notes">
-              I give you a black box with a function in it.
+              I give you a black box with a function in it. (draw on iPad)
               <br><br>
               You cannot see inside, but you can put bits through it and see the output.
               <br><br>
@@ -51,16 +51,29 @@
             </aside>
           </section>
           <section>
-            <h4>The 4 single-bit operations</h4>
+            <p>
+              What is the issue with some of our single-bit operations?
+            </p>
             <aside class="notes">
-              What is the issue with some of our single-bit operations? (answer: not reversible)
+              (answer: not reversible)
             </aside>
           </section>
           <section>
-            <h4>On a Quantum Computer</h4>
-            <img src="/lesson7-assets/reversibility.png" class="rounded">
+            <h4>Quantum Oracle</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1">
+                <img src="/lesson7-assets/reversible-oracle.png" class="rounded">
+              </div>
+              <div class="col-span-1">
+                <p>Reversible</p>
+                <p>Requires a spare qubit</p>
+              </div>
+            </div>
             <aside class="notes">
               We can always tell the input from the output.
+              <br><br>
+              Show how this oracle works with a spare bit.
+              Assume that $|y\rangle$ starts at 0 (but we will break this assumption later)
               <br><br>
               Show on IBM Quantum Composer: Writing the 4 functions reversibly.
               Assume that Output starts at 0 (but we will break this assumption
@@ -69,15 +82,22 @@
               Image from the Quantum Computing for Computer Scientists video
             </aside>
           </section>
+          <section>
+            <h4>Coding Time!</h4>
+            <aside class="notes">
+              Hadamards on both qubits, then apply the "black box function" (pick one
+              for the sake of implementation). Hadamard the top (input) qubit after
+              the black box and then measure. If it's constant we get $|1\rangle$,
+              otherwise we get $|0\rangle$ if it's variable.
+            </aside>
+          </section>
         </section>
 
         <section>
           <h2>References</h2>
           <ul>
-            <li> <a href="https://en.wikipedia.org/wiki/Bit">https://en.wikipedia.org/wiki/Bit</a> </li>
-            <li> <a href="https://en.wikipedia.org/wiki/Transistor">https://en.wikipedia.org/wiki/Transistor</a> </li>
+            <li> <i>Yanofsky, Mannucci. Quantum Computing for Computer Scientists</i> </li>
             <li> <a href="https://www.youtube.com/watch?v=F_Riqjdh2oM">https://www.youtube.com/watch?v=F_Riqjdh2oM</a> </li>
-            <li> <a href="https://en.wikipedia.org/wiki/Logic_gate">https://en.wikipedia.org/wiki/Logic_gate</a> </li>
           </ul>
         </section>
       </div>
