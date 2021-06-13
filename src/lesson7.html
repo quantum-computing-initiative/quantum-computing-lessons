@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quantum Computing Initiative</title>
+    <script type="module" src="/main.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      h1, h2, h3, h4, h5, h6 {
+        text-transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>QCI</h2>
+          <h4>Day 7: Surpassing classical computers [0]: The Deutsch Oracle</h4>
+          <aside class="notes">
+            Heavily drawn (basically stolen) from <a href="https://www.youtube.com/watch?v=F_Riqjdh2oM">https://www.youtube.com/watch?v=F_Riqjdh2oM</a>
+          </aside>
+        </section>
+
+        <section>
+          <section>
+            <p>What are the 4 single-bit operations?</p>
+            <p class="fragment">Which are constant? Which are variable?</p>
+          </section>
+          <section>
+            <h4>The Oracle</h4>
+            <aside class="notes">
+              I give you a black box with a function in it.
+              <br><br>
+              You cannot see inside, but you can put bits through it and see the output.
+              <br><br>
+              How many queries on a classical computer does it take to determine which of the 4 functions it is?
+              (answer: 2)
+              <br><br>
+              How about on a quantum computer?
+              (answer: also 2 -- there are 4 possible states, so we need at minimum 2 bits of information)
+              <br><br>
+              How many queries does it take on a classical computer to find if it's variable/constant?
+              (answer: 2 -- go through the queries)
+              <br><br>
+              How about on a quantum computer?
+              (answer: 1 -- this is our first example of quantum outperforming classical)
+            </aside>
+          </section>
+          <section>
+            <h4>The 4 single-bit operations</h4>
+            <aside class="notes">
+              What is the issue with some of our single-bit operations? (answer: not reversible)
+            </aside>
+          </section>
+          <section>
+            <h4>On a Quantum Computer</h4>
+            <img src="/lesson7-assets/reversibility.png" class="rounded">
+            <aside class="notes">
+              We can always tell the input from the output.
+              <br><br>
+              Show on IBM Quantum Composer: Writing the 4 functions reversibly.
+              Assume that Output starts at 0 (but we will break this assumption
+              for our algorithm)
+              <br><br>
+              Image from the Quantum Computing for Computer Scientists video
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li> <a href="https://en.wikipedia.org/wiki/Bit">https://en.wikipedia.org/wiki/Bit</a> </li>
+            <li> <a href="https://en.wikipedia.org/wiki/Transistor">https://en.wikipedia.org/wiki/Transistor</a> </li>
+            <li> <a href="https://www.youtube.com/watch?v=F_Riqjdh2oM">https://www.youtube.com/watch?v=F_Riqjdh2oM</a> </li>
+            <li> <a href="https://en.wikipedia.org/wiki/Logic_gate">https://en.wikipedia.org/wiki/Logic_gate</a> </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
