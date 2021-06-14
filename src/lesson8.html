@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quantum Computing Initiative</title>
+    <script type="module" src="/main.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      h1, h2, h3, h4, h5, h6 {
+        text-transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>QCI Day 8</h2>
+          <h4>Surpassing classical computers [1]: Grover’s Algorithm</h4>
+        </section>
+
+        <section>
+          <section data-markdown>
+            <textarea data-template>
+              #### Big O Notation
+                ```python
+                  # linear search: O(n)
+                  [31, 41, 59, 26, 53, 58, 97, 93, 23, 84, 62, 64]
+                  # binary search: O(log n)
+                  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+                ```
+            </textarea>
+          </section>
+          <section>
+            <h4>P vs NP</h4>
+            <aside class="notes">
+              P-class problems: searching a list, sorting a list
+              <br><br>
+              NP-complete problems: sudoku, travelling salesman, etc.
+              <br><br>
+              Whether or not these two classes of problems are the same (P = NP)
+              is a major unsolved problem in computer science and is awaiting
+              proof (Milennium Prize Problem)
+            </aside>
+          </section>
+          <section>
+            <h4>Searching a list</h4>
+            <aside class="notes">
+              It is very easy to verify if we found the solution, but it is harder
+              to actually find the solution
+              <br><br>
+              Unstructured database search can be solved in polynomial time, but
+              it is a good analogy to some further applications of Grover's Algorithm
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Grover's Algorithm</h3>
+            <aside class="notes">
+              Often presented as an unstructured database search algorithm in $O(\sqrt{n})$,
+              and this is how we're going to learn the algorithm, but it's really
+              more of a tool for simplifying both P and NP problems.
+              <br><br>
+              This does NOT mean P = NP (we only get a quadratic speedup)
+            </aside>
+          </section>
+          <section>
+            <h4>The Oracle</h4>
+            <div class="grid grid-cols-3">
+              <div class="col-span-2">
+                <img src="/lesson8-assets/grover-cards.png" class="rounded-lg" width="600">
+              </div>
+              <div class="col-span-1">
+                <p>Did we find the winner?</p>
+              </div>
+            </div>
+            <aside class="notes">
+              Let's play a game! Guess what card I'm thinking of.
+              <br><br>
+              The idea of Grover's Algorithm: This oracle is a black box that tells us
+              whether or not our input is the correct answer. Our goal is to find
+              the correct answer (winner).
+              <br><br>
+              I was the oracle in our card game
+            </aside>
+          </section>
+          <section>
+            <h4>Uniform Superposition</h4>
+            <div>
+              $$
+                \begin{bmatrix}
+                  |00\rangle, &
+                  |01\rangle, &
+                  |10\rangle, &
+                  |11\rangle
+                \end{bmatrix}^T \\
+                \begin{bmatrix}
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{1}{\sqrt{4}}
+                \end{bmatrix}^T
+              $$
+            </div>
+            <aside class="notes">
+              When we start, each position is equally likely. A random guess
+              is just as good as another. We can thus put our qubits into
+              uniform superposition.
+              <br><br>
+              We only need 2 qubits to represent 4 states.
+              <br><br>
+              This just comes from putting Hadamards on all the qubits.
+              This one represents a 2-qubit system.
+              <br><br>
+              The row on the bottom represents the probability for each value
+            </aside>
+          </section>
+          <section>
+            <h4>Phase Inversion</h4>
+            <div>
+              $$
+                U_\omega|x\rangle = \bigg\{
+                \begin{aligned}
+                \phantom{-}|x\rangle \quad \text{if} \; x \neq \omega \\
+                -|x\rangle \quad \text{if} \; x = \omega \\
+                \end{aligned}
+              $$
+            </div>
+            <hr>
+            <div class="fragment">
+              $$
+                \begin{bmatrix}
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{-1}{\sqrt{4}}
+                \end{bmatrix}^T
+              $$
+            </div>
+            <aside class="notes">
+              The first trick we use is phase inversion. The oracle, represented by
+              $U_\omega$, inverts the phase of the winner state.
+              <br><br>
+              Let's say the winner is the $|11\rangle$ state
+            </aside>
+          </section>
+          <section>
+            <h4>Oracle Matrix</h4>
+            <div>
+              $$
+                U_\omega = 
+                \begin{bmatrix}
+                1 & 0 & 0 & 0 \\
+                0 & 1 & 0 & 0 \\
+                0 & 0 & 1 & 0 \\
+                0 & 0 & 0 & -1 \\
+                \end{bmatrix}
+                = \mathrm{CZ}
+              $$
+            </div>
+            <hr>
+            <div>
+              $$
+                \begin{bmatrix}
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{1}{\sqrt{4}}, &
+                  \frac{-1}{\sqrt{4}}
+                \end{bmatrix}^T
+              $$
+            </div>
+            <aside class="notes">
+              This matrix flips the sign of the $|11\rangle$ state (on iPad
+              show correspondence between the rows and columns in matrices)
+              <br><br>
+              The $|11\rangle$ state maps to the $|11\rangle$ state but with
+              a negative sign (phase flip). That's how we can tell it's
+              controlled-Z
+              <br><br>
+              Show matrix multiplication on iPad
+            </aside>
+          </section>
+          <section>
+            <h4>Inversion About the Mean</h4>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1">
+                <img src="/lesson8-assets/grover-inversion-prior.jpeg" class="rounded">
+              </div>
+              <div class="col-span-1">
+                <img src="/lesson8-assets/grover-inversion-after.jpeg" class="rounded">
+              </div>
+            </div>
+            <aside class="notes">
+              We repeat this step up to $\sqrt{2^n}$ times, where n is the number of items
+              <br><br>
+              This will amplify our winning state and ultimately reduce the probabilities of the other states
+              <br><br>
+              Show on iPad if necessary
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <h3>Coding in Qiskit</h3>
+        </section>
+
+        <section>
+          <h3>Grover's Dinner Party</h3>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li> <i>Yanofsky, Mannucci. Quantum Computing for Computer Scientists</i> </li>
+            <li>
+              <a href="https://quantumcomputing.stackexchange.com/questions/2110/whats-the-point-of-grovers-algorithm-if-we-have-to-search-the-list-of-elements">
+                What's the point of Grover's algorithm if we have to search the list of elements to build the oracle?
+              </a>
+            </li>
+            <li>
+              <a href="https://qiskit.org/textbook/ch-algorithms/grover.html#Amplitude-Amplification">
+                Qiskit Textbook. Grover's Algorithm
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=0RPFWZj7Jm0">
+                Grovers Algorithm — Programming on Quantum Computers — Coding with Qiskit S2E3
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/watch?v=ePr2MgQkqL0">
+                Dinner Party using Grover's Algorithm — Programming on Quantum Computers — Coding with Qiskit S2E5
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
