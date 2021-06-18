@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quantum Computing Initiative</title>
+    <script type="module" src="/main.js"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+      h1, h2, h3, h4, h5, h6 {
+        text-transform: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>QCI Day 9</h2>
+          <h4>The Past, Present, and Future of Quantum Computing</h4>
+        </section>
+
+        <section>
+          <section>
+            <h4>A (non-comprehensive) history of quantum</h4>
+          </section>
+          <section>
+            <p>1900, Max Planck: Quantization of energy levels</p>
+            <p class="fragment">Schrodinger: Wave equation</p>
+            <p class="fragment">1920s: Copenhagen interpretation</p>
+            <p class="fragment">Feynman: Quantum Electrodynamics</p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h4>Quantum Computing</h4>
+          </section>
+          <section>
+            <p>1980: Paul Benioff's paper discussing the possibility of a quantum computer</p>
+            <p class="fragment">1981: Feynman claims that quantum computers can outperform classical</p>
+            <p class="fragment">1992: Deustch-Jozsa algorithm developed</p>
+            <p class="fragment">1994: Shor's Algorithm developed</p>
+            <p class="fragment">1996: Grover's Algorithm developed</p>
+            <aside class="notes">
+              Feynman: "nature isn't classical, dammit, and if you want to make
+              a simulation of nature, you'd better make it quantum mechanical."
+              <br><br>
+              The largest number Shor's Algorithm has factored is 21. Our
+              quantum computers don't have enough qubits to factor large numbers.
+              Nevertheless, since cryptography depends on prime numbers being
+              hard to factor, security researchers are looking into ways to
+              make our systems more secure with quantum.
+            </aside>
+          </section>
+          <section>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1">
+                <img src="/lesson9-assets/dwave.jpeg" alt="" class="rounded">
+              </div>
+              <div class="col-span-1">
+                <p>2011: D-Wave builds 1st quantum computer</p>
+                <p class="fragment">2019: Google Quantum Supremacy</p>
+              </div>
+            </div>
+            <aside class="notes">
+              D-Wave computers have a lot more qubits, but they are not general-purpose
+              quantum computers. They are for problems where graph interconnectedness
+              (the degrees of the nodes) are relatively small -- only works in special
+              cases, such as dealing with a game of checkers, for example. Also suitable
+              for machine learning applications.
+              <br><br>
+              Quantum supremacy, loosely defined, is the point at which quantum computers
+              solve a problem faster than any classical computer could reasonably be
+              expected to solve.
+            </aside>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h3>Quantum Research + Getting Involved!</h3>
+          </section>
+          <section>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1">
+                <img src="/lesson9-assets/qiskit.png" alt="" class="rounded">
+              </div>
+              <div class="col-span-1">
+                <p>Contribute to Qiskit (and other libraries!)</p>
+                <p class="fragment">Quantum Hardware Research</p>
+              </div>
+            </div>
+            <aside class="notes">
+              Intel is working on "spin qubits" that use electron spin, and these
+              qubits can reportedly work at higher temperatures (so-called "hot qubits")
+              than superconducting qubits can.
+            </aside>
+          </section>
+          <section>
+            <div class="grid grid-cols-2">
+              <div class="col-span-1">
+                <img src="/lesson9-assets/qiskit.png" alt="" class="rounded">
+              </div>
+              <div class="col-span-1">
+                <p>
+                  <a href="https://quantum.country/">Quantum Country</a>
+                </p>
+                <p>
+                  <a class="fragment" href="https://www.qosf.org/">QOSF</a>
+                </p>
+              </div>
+            </div>
+          </section>
+        </section>
+
+        <section>
+          <h2>References</h2>
+          <ul>
+            <li> <i>Yanofsky, Mannucci. Quantum Computing for Computer Scientists</i> </li>
+            <li>
+              <a href="https://docs.microsoft.com/en-us/azure/quantum/concepts-overview">
+                Quantum computing history and background
+              </a>
+            </li>
+            <li>
+              <a href="https://thecomputation.com/2020/03/19/brief-history-of-quantum-computing.html">
+                A Brief History of Quantum Computers
+              </a>
+            </li>
+            <li>
+              <a href="https://www.quora.com/What-are-the-main-differences-between-the-Google-Quantum-computer-IBM-Q-and-the-D-Wave-quantum-computer?share=1">
+                What are the main differences between the Google Quantum computer, IBM Q, and the D-Wave quantum computer?
+              </a>
+            </li>
+            <li>
+              <a href="https://www.forbes.com/sites/gilpress/2021/05/18/27-milestones-in-the-history-of-quantum-computing/">
+                27 Milestones In The History Of Quantum Computing
+              </a>
+            </li>
+            <li>
+              <a href="https://www.nasa.gov/feature/ames/quantum-supremacy">
+                Google and NASA Achieve Quantum Supremacy
+              </a>
+            </li>
+            <li>
+              <a href="https://www.intel.com/content/www/us/en/research/quantum-computing.html">
+                Reinventing Data Processing with Quantum Computing
+              </a>
+            </li>
+            <li>
+              <a href="https://www.epiqc.cs.uchicago.edu/qc-history">
+                History of Quantum Computing
+              </a>
+            </li>
+            <li>
+              <a href="https://www.chemeurope.com/en/encyclopedia/History_of_quantum_mechanics.html">
+                History of quantum mechanics
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </body>
+</html>
