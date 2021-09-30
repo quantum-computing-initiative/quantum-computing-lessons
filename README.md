@@ -14,8 +14,6 @@ Visit the **slides-pdf** directory and view the PDF slides for your desired less
 1. [Surpassing classical computers [1]: Grover’s Algorithm](./slides-pdf/lesson8.pdf)
 1. [The past, present, and future of quantum computing](./slides-pdf/lesson9.pdf)
 
-## For CS Club
-
 ## For Presenters
 First install the Reveal.js dependencies with `yarn`.
 
